@@ -1,0 +1,57 @@
+{
+  "name": "idiomatic-css",
+  "displayName": "Idiomatic CSS",
+  "description": "Sorts CSS properties using idiomatic order",
+  "version": "1.0.0",
+  "publisher": "andreaskian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andreaskian/vscode-idiomatic-css-order.git"
+  },
+  "engines": {
+    "vscode": "^1.66.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onCommand:idiomatic-css.sortSelection"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "idiomatic-css.sortSelection",
+        "title": "Idiomatic CSS: Format Selection"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "deploy": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.66.0",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.11.0",
+    "glob": "^7.2.0",
+    "mocha": "^9.2.2",
+    "typescript": "^4.5.5",
+    "vsce": "^2.7.0"
+  },
+  "dependencies": {
+    "stylelint": "^14.8.0",
+    "stylelint-config-idiomatic-css": "^1.1.0",
+    "stylelint-order": "^5.0.0"
+  }
+}
