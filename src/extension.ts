@@ -13,13 +13,35 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-export async function sortSelection(text: any) {
-  return stylelint.lint({
-    code: text,
-    config,
-    configBasedir: __dirname,
-    fix: true,
+export async function sortSelection(text: any): Promise<any> {
+  const result = new Promise(async (resolve) => {
+    const prefix = "replace{";
+    const postfix = "}/*replace*/";
+
+    if (!text.includes("{")) {
+      text = `${prefix}${text}`;
+    }
+
+    if (!text.includes("}")) {
+      text = `${text}${postfix}`;
+    }
+
+    const lint = await stylelint.lint({
+      code: text,
+      config,
+      configBasedir: __dirname,
+      fix: true,
+    });
+
+    if (lint.output) {
+      lint.output = lint.output.replace(prefix, "");
+      lint.output = lint.output.replace(postfix, "");
+    }
+
+    resolve(lint);
   });
+
+  return result;
 }
 
 async function formatSelection() {
