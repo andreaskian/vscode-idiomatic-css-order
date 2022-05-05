@@ -2,7 +2,7 @@
   "name": "idiomatic-css",
   "displayName": "Idiomatic CSS",
   "description": "Sorts CSS properties using idiomatic order",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "andreaskian",
   "repository": {
     "type": "git",
